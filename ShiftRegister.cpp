@@ -24,18 +24,33 @@ ShiftRegister::ShiftRegister(int dataPin, int latchPin, int clockPin){
 
 void ShiftRegister::registerWrite(int pin, int state){
   if (pin >= 0 && pin <= 7) {
-    digitalWrite(_latchPin, LOW);
-
     if (state == LOW) {
       _binTemp &= ~(1 << pin);
     } else if (state = HIGH) {
       _binTemp |= (1 << pin);
     }
-
+    digitalWrite(_latchPin, LOW);
     shiftOut(_dataPin, _clockPin, MSBFIRST, _binTemp);
     digitalWrite(_latchPin, HIGH);
   }
 }
+
+/*
+ * Switch all pins to a certain state
+*/
+void ShiftRegister::registerWriteAll(int state){
+  if (state == HIGH) {
+    _binTemp |= 2^8;
+  else {
+    _binTemp &= 0;
+  }
+  
+    digitalWrite(_latchPin, LOW);
+    shiftOut(_dataPin, _clockPin, MSBFIRST, _binTemp);
+    digitalWrite(_latchPin, HIGH);
+  
+}
+
 
 void ShiftRegister::setDebug(bool state){
   this->_debug = state;
