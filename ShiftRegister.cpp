@@ -1,7 +1,9 @@
 #include "Arduino.h"
 #include "ShiftRegister.h"
 
-
+/*
+ * Constructor
+*/
 ShiftRegister::ShiftRegister(int dataPin, int latchPin, int clockPin){
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
@@ -15,6 +17,10 @@ ShiftRegister::ShiftRegister(int dataPin, int latchPin, int clockPin){
   if (this->_debug) Serial.begin(9600);
 
 }
+
+/*
+ * Write a register pin (From 0 - 7) to HIGH or LOW
+*/
 
 void ShiftRegister::registerWrite(int pin, int state){
   if (pin >= 0 && pin <= 7) {
