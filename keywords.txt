@@ -1,0 +1,19 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ShiftRegister KEYWORD1
+_dataPin KEYWORD1
+_latchPin KEYWORD1
+_clockPin KEYWORD1
+_binTemp KEYWORD1
+_debug KEYWORD1
+
+
+
+#######################################
+# Methods
+#######################################
+registerWrite KEYWORD2
+setDebug KEYWORD2
+init KEYWORD2
